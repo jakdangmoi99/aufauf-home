@@ -52,11 +52,11 @@ export default function JuicySection({ ko }: JuicySectionProps) {
     : ["Silicone & paraben free", "Slightly acidic", "500·1000·2000ml"];
 
   return (
-    <div className="max-w-[1120px] mx-auto">
+    <div className="max-w-[1120px] mx-auto px-4 md:px-0">
       {/* Juicy Banner */}
-      <div className="grid grid-cols-[1.05fr_.95fr] gap-0 items-stretch rounded-[34px] overflow-hidden bg-white shadow-[0_20px_60px_rgba(36,30,26,.06)]">
+      <div className="grid grid-cols-1 md:grid-cols-[1.05fr_.95fr] gap-0 items-stretch rounded-[34px] overflow-hidden bg-white shadow-[0_20px_60px_rgba(36,30,26,.06)]">
         {/* Left: main product image */}
-        <div className="relative min-h-[524px] overflow-hidden">
+        <div className="relative min-h-[280px] md:min-h-[524px] overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/juicy-main.png"
@@ -97,7 +97,7 @@ export default function JuicySection({ ko }: JuicySectionProps) {
       </div>
 
       {/* Juicy Product Grid */}
-      <div className="grid grid-cols-3 gap-[18px] mt-[18px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px] mt-[18px]">
         {juicy.map((item) => (
           <a
             key={item.num}
@@ -113,14 +113,14 @@ export default function JuicySection({ ko }: JuicySectionProps) {
               className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 rounded-[26px]"
             />
             {/* Product image area - circle bottom aligned with product bottom */}
-            <div className="relative w-full flex-1 flex items-end justify-center min-h-[320px]">
+            <div className="relative w-full flex-1 flex items-end justify-center min-h-[240px] md:min-h-[320px]">
               {/* White circle background - bottom aligned */}
-              <div className="absolute bottom-[66px] left-1/2 -translate-x-1/2 w-[216px] h-[216px] rounded-full bg-white shadow-[inset_0_0_0_1px_rgba(36,30,26,.05)]" />
+              <div className="absolute bottom-[66px] left-1/2 -translate-x-1/2 w-[160px] h-[160px] md:w-[216px] md:h-[216px] rounded-full bg-white shadow-[inset_0_0_0_1px_rgba(36,30,26,.05)]" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={item.img}
                 alt={item.en}
-                className="relative z-[1] h-[348px] w-auto max-w-none drop-shadow-[0_14px_22px_rgba(36,30,26,.18)]"
+                className="relative z-[1] h-[260px] md:h-[348px] w-auto max-w-none drop-shadow-[0_14px_22px_rgba(36,30,26,.18)]"
               />
             </div>
             <span

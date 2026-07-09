@@ -50,7 +50,7 @@ export default function GlobalSection({ ko }: GlobalSectionProps) {
         </div>
 
         {/* Map */}
-        <div className="relative w-full aspect-[2000/834] max-w-[960px] mx-auto">
+        <div className="relative w-full aspect-[2000/834] max-w-[960px] mx-auto overflow-x-auto">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/world-map.png"
@@ -90,7 +90,7 @@ export default function GlobalSection({ ko }: GlobalSectionProps) {
         </div>
 
         {/* Country list */}
-        <div className="flex flex-wrap gap-[9px] mt-[30px] justify-center">
+        <div className="flex flex-wrap gap-[7px] md:gap-[9px] mt-[30px] justify-center px-2 md:px-0">
           {markets.map((m) => {
             const active = hovered === m.name;
             return (
@@ -98,7 +98,7 @@ export default function GlobalSection({ ko }: GlobalSectionProps) {
                 key={m.name}
                 onMouseEnter={() => setHovered(m.name)}
                 onMouseLeave={() => setHovered(null)}
-                className={`px-[15px] py-2 rounded-full font-[var(--font-fredoka)] text-[13.5px] whitespace-nowrap cursor-pointer transition-all duration-200 ${
+                className={`px-[11px] md:px-[15px] py-1.5 md:py-2 rounded-full font-[var(--font-fredoka)] text-[12px] md:text-[13.5px] whitespace-nowrap cursor-pointer transition-all duration-200 ${
                   active
                     ? "border border-[#F6B12E] bg-[#F6B12E] text-[#241E1A]"
                     : "border border-[#241E1A]/18 bg-white/50 text-[#241E1A]/80"
@@ -111,7 +111,7 @@ export default function GlobalSection({ ko }: GlobalSectionProps) {
         </div>
 
         {/* Exhibition & Domestic info */}
-        <div className="flex flex-wrap gap-[26px] mt-6 justify-center text-center text-[13.5px] text-[#241E1A]/62">
+        <div className="flex flex-wrap gap-4 md:gap-[26px] mt-6 justify-center text-center text-[12px] md:text-[13.5px] text-[#241E1A]/62 px-2 md:px-0">
           <div>
             <span className="text-[#2E9FC4] font-[var(--font-fredoka)]">
               Exhibitions &apos;24 ·{" "}

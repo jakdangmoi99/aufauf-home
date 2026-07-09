@@ -31,6 +31,17 @@ export const metadata: Metadata = {
   title: "auf auf — Bathtime Playlist",
   description:
     "씻는 시간을 감정까지 정화하는 다정한 루틴으로. 어푸어푸가 당신의 욕실 플레이리스트를 큐레이션합니다.",
+  openGraph: {
+    title: "auf auf — Bathtime Playlist",
+    description:
+      "씻는 시간을 감정까지 정화하는 다정한 루틴으로. 어푸어푸가 당신의 욕실 플레이리스트를 큐레이션합니다.",
+    images: [{ url: "/images/og-thumbnail.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "auf auf — Bathtime Playlist",
+    images: ["/images/og-thumbnail.png"],
+  },
 };
 
 export default function RootLayout({

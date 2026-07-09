@@ -8,7 +8,7 @@ export default function Hero({ ko }: HeroProps) {
       {/* Hero Video (full-bleed splash style) */}
       <section
         id="home"
-        className="scroll-mt-16 relative h-[82vh] min-h-[520px] mt-16 overflow-hidden bg-black"
+        className="scroll-mt-16 relative h-[50vh] md:h-[82vh] min-h-[320px] md:min-h-[520px] mt-16 overflow-hidden bg-black"
       >
         <video
           autoPlay
@@ -36,20 +36,20 @@ export default function Hero({ ko }: HeroProps) {
 
       {/* Hero Text (Spa style typography) */}
       <section
-        className="text-center px-[clamp(18px,4vw,48px)] pt-14 pb-6 max-w-[860px] mx-auto"
+        className="text-center px-[clamp(18px,4vw,48px)] pt-8 md:pt-14 pb-6 max-w-[860px] mx-auto"
       >
         <div className="font-[var(--font-fredoka)] text-[13px] tracking-[.2em] uppercase text-[#2E9FC4] mb-[18px]">
           Made in Korea
         </div>
         <h1 className="m-0 leading-[.98]">
-          <span className="block font-[var(--font-cormorant)] italic font-medium text-[clamp(42px,7vw,92px)] text-[#241E1A]">
+          <span className="block font-[var(--font-cormorant)] italic font-medium text-[clamp(32px,7vw,92px)] text-[#241E1A]">
             Bathtime
           </span>
-          <span className="block font-[var(--font-cormorant)] font-semibold text-[clamp(42px,7vw,92px)] tracking-tight text-[#2E9FC4] -mt-1">
+          <span className="block font-[var(--font-cormorant)] font-semibold text-[clamp(32px,7vw,92px)] tracking-tight text-[#2E9FC4] -mt-1">
             Playlist
           </span>
         </h1>
-        <p className="max-w-[560px] mx-auto mt-[22px] text-[17px] leading-[1.8] text-[#241E1A]/68">
+        <p className="max-w-[560px] mx-auto mt-[22px] text-[15px] md:text-[17px] leading-[1.8] text-[#241E1A]/68">
           {ko ? (
             <>씻는 시간을 감정까지 정화하는 다정한 루틴으로.<br />어푸어푸가 당신의 욕실 플레이리스트를 큐레이션합니다.</>
           ) : (

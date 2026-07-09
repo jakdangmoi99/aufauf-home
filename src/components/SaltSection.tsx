@@ -4,10 +4,12 @@ import { useState } from "react";
 
 function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
   const [offset, setOffset] = useState(0);
+  // On mobile show 1 card, on desktop show 3
+  // We use a simple approach: render all cards in a responsive grid
   const maxOffset = salt.length - 3;
+  const maxOffsetMobile = salt.length - 1;
   const prev = () => setOffset((o) => Math.max(0, o - 1));
-  const next = () => setOffset((o) => Math.min(maxOffset, o + 1));
-  const visible = salt.slice(offset, offset + 3);
+  const next = () => setOffset((o) => Math.min(salt.length - 1, o + 1));
 
   return (
     <div className="relative mt-[18px]">
@@ -15,27 +17,30 @@ function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
       {offset > 0 && (
         <button
           onClick={prev}
-          className="absolute left-[-20px] top-1/2 -translate-y-1/2 z-20 w-[44px] h-[44px] rounded-full bg-white shadow-[0_4px_16px_rgba(36,30,26,.15)] flex items-center justify-center text-[#241E1A] text-xl cursor-pointer hover:bg-[#241E1A] hover:text-white transition-colors"
+          className="absolute left-[-8px] md:left-[-20px] top-1/2 -translate-y-1/2 z-20 w-[36px] h-[36px] md:w-[44px] md:h-[44px] rounded-full bg-white shadow-[0_4px_16px_rgba(36,30,26,.15)] flex items-center justify-center text-[#241E1A] text-xl cursor-pointer hover:bg-[#241E1A] hover:text-white transition-colors"
         >
           ‹
         </button>
       )}
-      {offset < maxOffset && (
+      {((offset < maxOffsetMobile)) && (
         <button
           onClick={next}
-          className="absolute right-[-20px] top-1/2 -translate-y-1/2 z-20 w-[44px] h-[44px] rounded-full bg-white shadow-[0_4px_16px_rgba(36,30,26,.15)] flex items-center justify-center text-[#241E1A] text-xl cursor-pointer hover:bg-[#241E1A] hover:text-white transition-colors"
+          className="absolute right-[-8px] md:right-[-20px] top-1/2 -translate-y-1/2 z-20 w-[36px] h-[36px] md:w-[44px] md:h-[44px] rounded-full bg-white shadow-[0_4px_16px_rgba(36,30,26,.15)] flex items-center justify-center text-[#241E1A] text-xl cursor-pointer hover:bg-[#241E1A] hover:text-white transition-colors"
         >
           ›
         </button>
       )}
 
-      {/* 3 cards visible, same as juicy grid */}
-      <div className="grid grid-cols-3 gap-[18px]">
-        {visible.map((item) => (
+      {/* Cards - 1 on mobile, 3 on desktop */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px]">
+        {/* Mobile: show 1 card at offset; Desktop: show 3 cards starting at offset (clamped) */}
+        {salt
+          .slice(offset, offset + 3)
+          .map((item, idx) => (
           <a
             key={item.num}
             href="#contact"
-            className="group relative flex flex-col items-center text-center rounded-[26px] px-[18px] pt-7 pb-6 overflow-hidden shadow-[0_12px_34px_rgba(36,30,26,.05)] transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_22px_46px_rgba(36,30,26,.12)]"
+            className={`group relative flex flex-col items-center text-center rounded-[26px] px-[18px] pt-7 pb-6 overflow-hidden shadow-[0_12px_34px_rgba(36,30,26,.05)] transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_22px_46px_rgba(36,30,26,.12)] ${idx > 0 ? "hidden md:flex" : ""}`}
             style={{ background: `linear-gradient(180deg, ${item.color}, rgba(255,255,255,.5))` }}
           >
             {/* Hover: full card background image */}
@@ -45,12 +50,12 @@ function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
               alt={`${item.en} detail`}
               className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 rounded-[26px]"
             />
-            <div className="relative w-full h-[320px] flex items-end justify-center">
+            <div className="relative w-full h-[240px] md:h-[320px] flex items-end justify-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={item.img}
                 alt={item.en}
-                className="h-[348px] w-auto max-w-none drop-shadow-[0_14px_22px_rgba(36,30,26,.16)]"
+                className="h-[260px] md:h-[348px] w-auto max-w-none drop-shadow-[0_14px_22px_rgba(36,30,26,.16)]"
               />
             </div>
             <span
@@ -81,7 +86,7 @@ function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
 
       {/* Dots indicator */}
       <div className="flex justify-center gap-2 mt-4">
-        {Array.from({ length: maxOffset + 1 }, (_, i) => (
+        {salt.map((_, i) => (
           <button
             key={i}
             onClick={() => setOffset(i)}
@@ -152,9 +157,9 @@ interface SaltSectionProps {
 
 export default function SaltSection({ ko }: SaltSectionProps) {
   return (
-    <div className="max-w-[1120px] mx-auto mt-10">
+    <div className="max-w-[1120px] mx-auto mt-10 px-4 md:px-0">
       {/* Salt Banner */}
-      <div className="grid grid-cols-[.95fr_1.05fr] gap-0 items-stretch rounded-[34px] overflow-hidden bg-white shadow-[0_20px_60px_rgba(36,30,26,.06)]">
+      <div className="grid grid-cols-1 md:grid-cols-[.95fr_1.05fr] gap-0 items-stretch rounded-[34px] overflow-hidden bg-white shadow-[0_20px_60px_rgba(36,30,26,.06)]">
         {/* Left: branding */}
         <div className="flex flex-col justify-center p-[36px_clamp(22px,3vw,44px)]">
           <span className="font-[var(--font-fredoka)] text-[13px] tracking-[.14em] uppercase text-[#B0544F]">
@@ -189,7 +194,7 @@ export default function SaltSection({ ko }: SaltSectionProps) {
           </div>
         </div>
         {/* Right: main product image */}
-        <div className="relative min-h-[524px] overflow-hidden">
+        <div className="relative min-h-[280px] md:min-h-[524px] overflow-hidden order-first md:order-none">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/salt-main.png"

@@ -35,7 +35,7 @@ export default function ContactSection({ ko }: ContactSectionProps) {
           </p>
         </div>
 
-        <div className="max-w-[640px] mx-auto">
+        <div className="max-w-full md:max-w-[640px] mx-auto">
           {/* Form */}
           {submitted ? (
             <div className="bg-[#DCF1F7] rounded-3xl p-[54px_30px] text-center min-h-[360px] flex flex-col items-center justify-center gap-3">
@@ -86,7 +86,7 @@ export default function ContactSection({ ko }: ContactSectionProps) {
               </div>
 
               {/* Name & Email */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label className="flex flex-col gap-1.5">
                   <span className="text-[15px] font-medium text-[#241E1A]/70">
                     {ko ? "이름" : "Name"}

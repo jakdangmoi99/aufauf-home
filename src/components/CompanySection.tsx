@@ -12,7 +12,7 @@ export default function CompanySection({ ko }: CompanySectionProps) {
         <span className="font-[var(--font-fredoka)] text-[16px] font-medium tracking-[.16em] uppercase text-[#2E9FC4]">
           About AUF AUF
         </span>
-        <div className="grid grid-cols-[1.15fr_.85fr] gap-[46px] mt-4 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_.85fr] gap-8 lg:gap-[46px] mt-4 items-stretch">
           <div>
             <h2 className="font-[var(--font-fredoka)] font-semibold text-[clamp(28px,3.6vw,44px)] leading-[1.1] tracking-tight mb-[18px]">
               {ko
@@ -48,7 +48,7 @@ export default function CompanySection({ ko }: CompanySectionProps) {
             </div>
 
             {/* Natural Origin - below Mission */}
-            <div className="mt-8 flex items-center gap-5 bg-[#E7F1F4] rounded-2xl px-6 py-5">
+            <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 bg-[#E7F1F4] rounded-2xl px-4 sm:px-6 py-5">
               {/* Leaf icon */}
               <div className="flex-shrink-0">
                 <svg width="44" height="44" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,8 +63,8 @@ export default function CompanySection({ ko }: CompanySectionProps) {
                   <path d="M24 34L30 30" stroke="#2E9FC4" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
               </div>
-              <div className="flex items-center gap-4">
-                <span className="font-[var(--font-fredoka)] text-[48px] font-bold leading-none text-[#155874]">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <span className="font-[var(--font-fredoka)] text-[36px] sm:text-[48px] font-bold leading-none text-[#155874]">
                   86.8<span className="text-[26px]">%</span>
                 </span>
                 <div>
@@ -82,9 +82,9 @@ export default function CompanySection({ ko }: CompanySectionProps) {
           </div>
 
           {/* Polaroid photos */}
-          <div className="relative min-h-[340px] flex flex-col items-center justify-center">
+          <div className="relative min-h-[260px] md:min-h-[340px] flex flex-col items-center justify-center">
             {/* Polaroid 1 - back, tilted left */}
-            <div className="absolute top-4 left-2 w-[85%] rotate-[-4deg] bg-white rounded-md p-2.5 pb-10 shadow-[0_8px_30px_rgba(36,30,26,.18)]">
+            <div className="absolute top-4 left-2 w-[70%] md:w-[85%] rotate-[-4deg] bg-white rounded-md p-2.5 pb-10 shadow-[0_8px_30px_rgba(36,30,26,.18)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/natural-ingredients.png"
@@ -93,7 +93,7 @@ export default function CompanySection({ ko }: CompanySectionProps) {
               />
             </div>
             {/* Polaroid 2 - front, tilted right */}
-            <div className="absolute top-10 right-2 w-[80%] rotate-[3deg] bg-white rounded-md p-2.5 pb-14 shadow-[0_12px_36px_rgba(36,30,26,.22)]">
+            <div className="absolute top-10 right-2 w-[65%] md:w-[80%] rotate-[3deg] bg-white rounded-md p-2.5 pb-14 shadow-[0_12px_36px_rgba(36,30,26,.22)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/natural-ingredients.png"

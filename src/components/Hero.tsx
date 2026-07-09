@@ -45,7 +45,7 @@ export default function Hero({ ko }: HeroProps) {
           <span className="block font-[var(--font-cormorant)] italic font-medium text-[clamp(32px,7vw,92px)] text-[#241E1A]">
             Bathtime
           </span>
-          <span className="block font-[var(--font-cormorant)] font-semibold text-[clamp(32px,7vw,92px)] tracking-tight text-[#2E9FC4] -mt-1">
+          <span className="block font-[var(--font-cormorant)] italic font-semibold text-[clamp(32px,7vw,92px)] tracking-tight text-[#2E9FC4] -mt-1">
             Playlist
           </span>
         </h1>

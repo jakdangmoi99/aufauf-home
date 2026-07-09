@@ -48,10 +48,9 @@ export default function CompanySection({ ko }: CompanySectionProps) {
             </div>
 
             {/* Natural Origin - below Mission */}
-            <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 bg-[#E7F1F4] rounded-2xl px-4 sm:px-6 py-5">
-              {/* Leaf icon */}
-              <div className="flex-shrink-0">
-                <svg width="44" height="44" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div className="mt-8 bg-[#E7F1F4] rounded-2xl px-5 py-5">
+              <div className="flex items-center gap-3 mb-2">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                   <path d="M24 4C24 4 40 10 40 28C40 36 34 42 24 44C14 42 8 36 8 28C8 10 24 4 24 4Z" fill="#C4E6D3"/>
                   <path d="M24 4C24 4 40 10 40 28C40 36 34 42 24 44C14 42 8 36 8 28C8 10 24 4 24 4Z" stroke="#2E9FC4" strokeWidth="2" strokeLinejoin="round"/>
                   <path d="M24 12V38" stroke="#2E9FC4" strokeWidth="1.8" strokeLinecap="round"/>
@@ -62,21 +61,17 @@ export default function CompanySection({ ko }: CompanySectionProps) {
                   <path d="M24 34L18 30" stroke="#2E9FC4" strokeWidth="1.5" strokeLinecap="round"/>
                   <path d="M24 34L30 30" stroke="#2E9FC4" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
-              </div>
-              <div className="flex items-center gap-3 sm:gap-4">
-                <span className="font-[var(--font-fredoka)] text-[36px] sm:text-[48px] font-bold leading-none text-[#155874]">
-                  86.8<span className="text-[26px]">%</span>
+                <span className="font-[var(--font-fredoka)] text-[16px] font-semibold tracking-[.12em] uppercase text-[#2E9FC4]">
+                  {ko ? "자연유래" : "Natural Origin"}
                 </span>
-                <div>
-                  <span className="inline-block font-[var(--font-fredoka)] text-[16px] font-semibold tracking-[.12em] uppercase text-[#2E9FC4] mb-1">
-                    {ko ? "자연유래" : "Natural Origin"}
-                  </span>
-                  <div className="text-[16px] text-[#241E1A]/70 leading-[1.5]">
-                    {ko
-                      ? "전 제품 자연유래 성분 86.8% 이상. 히말라야 핑크솔트와 살구씨 등 순한 성분으로."
-                      : "Over 86.8% natural-origin ingredients — Himalayan pink salt, apricot seeds and more."}
-                  </div>
-                </div>
+                <span className="font-[var(--font-fredoka)] text-[36px] sm:text-[48px] font-bold leading-none text-[#155874] ml-auto">
+                  86.8<span className="text-[22px] sm:text-[26px]">%</span>
+                </span>
+              </div>
+              <div className="text-[15px] text-[#241E1A]/70 leading-[1.6]">
+                {ko
+                  ? "전 제품 자연유래 성분 86.8% 이상. 히말라야 핑크솔트와 살구씨 등 순한 성분으로."
+                  : "Over 86.8% natural-origin ingredients — Himalayan pink salt, apricot seeds and more."}
               </div>
             </div>
           </div>

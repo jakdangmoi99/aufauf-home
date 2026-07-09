@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 const juicy = [
   {
     num: "01",
@@ -41,6 +43,62 @@ const juicy = [
     hover: "/images/juicy-coconut.png",
   },
 ];
+
+function JuicyGrid({ juicy, ko }: { juicy: typeof juicyData; ko: boolean }) {
+  const [tapped, setTapped] = useState<string | null>(null);
+
+  const handleTap = (num: string, e: React.MouseEvent) => {
+    // On touch devices, toggle hover image instead of navigating
+    if ("ontouchstart" in window) {
+      e.preventDefault();
+      setTapped(tapped === num ? null : num);
+    }
+  };
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px] mt-[18px]">
+      {juicy.map((item) => {
+        const active = tapped === item.num;
+        return (
+          <a
+            key={item.num}
+            href="#contact"
+            onClick={(e) => handleTap(item.num, e)}
+            className="group relative flex flex-col items-center text-center rounded-[26px] px-[18px] pt-7 pb-6 overflow-hidden transition-transform duration-400 hover:-translate-y-1.5"
+            style={{ background: item.soft }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={item.hover}
+              alt={`${item.en} detail`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 z-10 rounded-[26px] ${active ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
+            />
+            <div className="relative w-full flex-1 flex items-end justify-center min-h-[240px] md:min-h-[320px]">
+              <div className="absolute bottom-[66px] left-1/2 -translate-x-1/2 w-[160px] h-[160px] md:w-[216px] md:h-[216px] rounded-full bg-white shadow-[inset_0_0_0_1px_rgba(36,30,26,.05)]" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={item.img}
+                alt={item.en}
+                className="relative z-[1] h-[260px] md:h-[348px] w-auto max-w-none drop-shadow-[0_14px_22px_rgba(36,30,26,.18)]"
+              />
+            </div>
+            <span className="font-[var(--font-fredoka)] font-semibold text-[25px] mt-2" style={{ color: item.tint }}>
+              {item.en}
+            </span>
+            <span className="text-[15px] opacity-80 mt-[3px]" style={{ color: item.tint }}>
+              {ko ? item.ko : item.en}
+            </span>
+            <span className="text-[14px] text-[#241E1A]/55 mt-2">
+              {ko ? item.with_ko : item.with_en}
+            </span>
+          </a>
+        );
+      })}
+    </div>
+  );
+}
+
+const juicyData = juicy;
 
 interface JuicySectionProps {
   ko: boolean;
@@ -97,50 +155,7 @@ export default function JuicySection({ ko }: JuicySectionProps) {
       </div>
 
       {/* Juicy Product Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px] mt-[18px]">
-        {juicy.map((item) => (
-          <a
-            key={item.num}
-            href="#contact"
-            className="group relative flex flex-col items-center text-center rounded-[26px] px-[18px] pt-7 pb-6 overflow-hidden transition-transform duration-400 hover:-translate-y-1.5"
-            style={{ background: item.soft }}
-          >
-            {/* Hover: full card background image */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={item.hover}
-              alt={`${item.en} detail`}
-              className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 rounded-[26px]"
-            />
-            {/* Product image area - circle bottom aligned with product bottom */}
-            <div className="relative w-full flex-1 flex items-end justify-center min-h-[240px] md:min-h-[320px]">
-              {/* White circle background - bottom aligned */}
-              <div className="absolute bottom-[66px] left-1/2 -translate-x-1/2 w-[160px] h-[160px] md:w-[216px] md:h-[216px] rounded-full bg-white shadow-[inset_0_0_0_1px_rgba(36,30,26,.05)]" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={item.img}
-                alt={item.en}
-                className="relative z-[1] h-[260px] md:h-[348px] w-auto max-w-none drop-shadow-[0_14px_22px_rgba(36,30,26,.18)]"
-              />
-            </div>
-            <span
-              className="font-[var(--font-fredoka)] font-semibold text-[25px] mt-2"
-              style={{ color: item.tint }}
-            >
-              {item.en}
-            </span>
-            <span
-              className="text-[15px] opacity-80 mt-[3px]"
-              style={{ color: item.tint }}
-            >
-              {item.ko}
-            </span>
-            <span className="text-[14px] text-[#241E1A]/55 mt-2">
-              {ko ? item.with_ko : item.with_en}
-            </span>
-          </a>
-        ))}
-      </div>
+      <JuicyGrid juicy={juicy} ko={ko} />
     </div>
   );
 }

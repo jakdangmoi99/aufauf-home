@@ -4,12 +4,17 @@ import { useState } from "react";
 
 function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
   const [offset, setOffset] = useState(0);
-  // On mobile show 1 card, on desktop show 3
-  // We use a simple approach: render all cards in a responsive grid
-  const maxOffset = salt.length - 3;
+  const [tapped, setTapped] = useState<string | null>(null);
   const maxOffsetMobile = salt.length - 1;
   const prev = () => setOffset((o) => Math.max(0, o - 1));
   const next = () => setOffset((o) => Math.min(salt.length - 1, o + 1));
+
+  const handleTap = (num: string, e: React.MouseEvent) => {
+    if ("ontouchstart" in window) {
+      e.preventDefault();
+      setTapped(tapped === num ? null : num);
+    }
+  };
 
   return (
     <div className="relative mt-[18px]">
@@ -40,15 +45,15 @@ function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
           <a
             key={item.num}
             href="#contact"
+            onClick={(e) => handleTap(item.num, e)}
             className={`group relative flex flex-col items-center text-center rounded-[26px] px-[18px] pt-7 pb-6 overflow-hidden shadow-[0_12px_34px_rgba(36,30,26,.05)] transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_22px_46px_rgba(36,30,26,.12)] ${idx > 0 ? "hidden md:flex" : ""}`}
             style={{ background: `linear-gradient(180deg, ${item.color}, rgba(255,255,255,.5))` }}
           >
-            {/* Hover: full card background image */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={item.hover}
               alt={`${item.en} detail`}
-              className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 rounded-[26px]"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 z-10 rounded-[26px] ${tapped === item.num ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
             />
             <div className="relative w-full h-[240px] md:h-[320px] flex items-end justify-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -68,7 +73,7 @@ function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
               className="text-[15px] opacity-80 mt-[3px]"
               style={{ color: item.deep }}
             >
-              {item.ko}
+              {ko ? item.ko : item.en}
             </span>
             <span
               className="w-6 h-px opacity-40 my-[11px]"

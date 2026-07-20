@@ -30,7 +30,7 @@ export default function GlobalSection({ ko }: GlobalSectionProps) {
   return (
     <section
       id="global"
-      className="scroll-mt-16 px-[clamp(18px,4vw,48px)] py-[84px] bg-[#E7F1F4] text-[#241E1A]"
+      className="scroll-mt-16 px-2 md:px-[clamp(18px,4vw,48px)] py-[84px] bg-[#E7F1F4] text-[#241E1A]"
     >
       <div className="max-w-[1120px] mx-auto">
         <div className="text-center mb-2.5">
@@ -50,7 +50,7 @@ export default function GlobalSection({ ko }: GlobalSectionProps) {
         </div>
 
         {/* Map */}
-        <div className="relative w-full aspect-[2000/834] max-w-[960px] mx-auto overflow-x-auto">
+        <div className="relative w-full aspect-[2000/834] max-w-full md:max-w-[960px] mx-auto overflow-visible pt-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/world-map.png"
@@ -64,6 +64,7 @@ export default function GlobalSection({ ko }: GlobalSectionProps) {
                 key={pin.name}
                 onMouseEnter={() => setHovered(pin.name)}
                 onMouseLeave={() => setHovered(null)}
+                onClick={() => setHovered(hovered === pin.name ? null : pin.name)}
                 className="absolute -translate-x-1/2 -translate-y-1/2 w-[26px] h-[26px] flex items-center justify-center cursor-pointer"
                 style={{
                   left: pin.x,

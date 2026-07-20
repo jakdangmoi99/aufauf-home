@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen" style={{ background: "#F6F1EA" }}>
-      <Header lang={lang} setLang={setLang} ko={ko} />
+      <Header lang={lang} setLang={setLang} ko={ko} activePage="home" />
 
       <Hero ko={ko} />
 

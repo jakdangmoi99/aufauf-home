@@ -88,7 +88,7 @@ function JuicyGrid({ juicy, ko }: { juicy: typeof juicyData; ko: boolean }) {
             )}
             {/* Mobile: 2nd tap → dark overlay + button */}
             {state === "button" && (
-              <a href="/products#juicy" className="absolute inset-0 z-20 rounded-[26px] flex items-center justify-center bg-[#241E1A]/40 md:hidden animate-[fadeIn_.3s_ease]">
+              <a href="/products#juicy" onClick={(e) => e.stopPropagation()} className="absolute inset-0 z-20 rounded-[26px] flex items-center justify-center bg-[#241E1A]/40 md:hidden animate-[fadeIn_.3s_ease]">
                 <span className="px-7 py-3 rounded-full bg-white text-[16px] font-[var(--font-fredoka)] font-semibold text-[#241E1A] shadow-lg">
                   {ko ? "자세히 보기" : "See details"}
                 </span>

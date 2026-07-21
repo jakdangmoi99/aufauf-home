@@ -70,7 +70,7 @@ function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
             )}
             {/* Mobile: 2nd tap → dark overlay + button */}
             {tapState[item.num] === "button" && (
-              <a href="/products#salt" className="absolute inset-0 z-20 rounded-[26px] flex items-center justify-center bg-[#241E1A]/40 md:hidden animate-[fadeIn_.3s_ease]">
+              <a href="/products#salt" onClick={(e) => e.stopPropagation()} className="absolute inset-0 z-20 rounded-[26px] flex items-center justify-center bg-[#241E1A]/40 md:hidden animate-[fadeIn_.3s_ease]">
                 <span className="px-7 py-3 rounded-full bg-white text-[16px] font-[var(--font-fredoka)] font-semibold text-[#241E1A] shadow-lg">
                   {ko ? "자세히 보기" : "See details"}
                 </span>

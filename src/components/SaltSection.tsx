@@ -42,19 +42,26 @@ function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
         {salt
           .slice(offset, offset + 3)
           .map((item, idx) => (
-          <a
+          <div
             key={item.num}
-            href="/products#salt"
             onClick={(e) => handleTap(item.num, e)}
-            className={`group relative flex flex-col items-center text-center rounded-[26px] px-[18px] pt-7 pb-6 overflow-hidden shadow-[0_12px_34px_rgba(36,30,26,.08)] transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_22px_46px_rgba(36,30,26,.14)] ${idx > 0 ? "hidden md:flex" : ""}`}
+            className={`group relative flex flex-col items-center text-center rounded-[26px] px-[18px] pt-7 pb-6 overflow-hidden shadow-[0_12px_34px_rgba(36,30,26,.08)] transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_22px_46px_rgba(36,30,26,.14)] cursor-pointer ${idx > 0 ? "hidden md:flex" : ""}`}
             style={{ background: `linear-gradient(180deg, ${item.color}, rgba(255,255,255,.5))` }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={item.hover}
-              alt={`${item.en} detail`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 z-10 rounded-[26px] ${tapped === item.num ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
-            />
+            {/* Desktop: hover overlay */}
+            <a href="/products#salt" className="absolute inset-0 z-20 rounded-[26px] hidden group-hover:flex items-center justify-center bg-[#241E1A]/40 transition-opacity duration-300">
+              <span className="px-7 py-3 rounded-full bg-white text-[16px] font-[var(--font-fredoka)] font-semibold text-[#241E1A] shadow-lg">
+                {ko ? "자세히 보기" : "See details"}
+              </span>
+            </a>
+            {/* Mobile: tap overlay */}
+            {tapped === item.num && (
+              <a href="/products#salt" className="absolute inset-0 z-20 rounded-[26px] flex items-center justify-center bg-[#241E1A]/40 md:hidden animate-[fadeIn_.3s_ease]">
+                <span className="px-7 py-3 rounded-full bg-white text-[16px] font-[var(--font-fredoka)] font-semibold text-[#241E1A] shadow-lg">
+                  {ko ? "자세히 보기" : "See details"}
+                </span>
+              </a>
+            )}
             <div className="relative w-full h-[240px] md:h-[320px] flex items-end justify-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -85,7 +92,7 @@ function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
             >
               {ko ? item.notes_ko : item.notes_en}
             </span>
-          </a>
+          </div>
         ))}
       </div>
 

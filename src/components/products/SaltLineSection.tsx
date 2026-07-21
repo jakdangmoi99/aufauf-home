@@ -6,7 +6,7 @@ export default function SaltLineSection({ ko }: { ko: boolean }) {
   return (
     <section id="salt" className="scroll-mt-16">
       {/* ── A. LINE HERO ── */}
-      <div className="relative overflow-hidden" style={{ minHeight: "clamp(480px, 60vw, 640px)" }}>
+      <div className="relative overflow-hidden" style={{ minHeight: "clamp(260px, 50vw, 640px)" }}>
         {/* Full-width video background */}
         <video
           autoPlay
@@ -21,7 +21,7 @@ export default function SaltLineSection({ ko }: { ko: boolean }) {
         <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,.35) 0%, rgba(0,0,0,.1) 50%, transparent 100%)" }} />
 
         {/* Floating text content */}
-        <div className="relative z-10 max-w-[1200px] mx-auto h-full flex flex-col justify-between p-8 md:p-14 md:py-16" style={{ minHeight: "clamp(480px, 60vw, 640px)" }}>
+        <div className="relative z-10 max-w-[1200px] mx-auto h-full flex flex-col justify-between p-6 md:p-14 md:py-16" style={{ minHeight: "clamp(260px, 50vw, 640px)" }}>
           <span className="inline-flex items-center gap-2.5 self-start px-5 py-2.5 rounded-full bg-white/20 backdrop-blur-sm text-[16px] font-medium text-white">
             <span className="relative flex h-2.5 w-2.5">
               <span className="absolute inset-0 rounded-full bg-white animate-ping opacity-60" />
@@ -37,7 +37,7 @@ export default function SaltLineSection({ ko }: { ko: boolean }) {
               </button>
               <div>
                 <p className="font-[var(--font-fredoka)] text-[16px] font-semibold uppercase tracking-[.14em] text-white/80 mb-2">4-IN-1 BATH POWERHOUSE</p>
-                <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(28px,5vw,42px)] leading-[1.12] text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,.15)" }}>
+                <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(22px,5vw,42px)] leading-[1.12] text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,.15)" }}>
                   {ko ? <>100% 히말라야 핑크 솔트로,<br/>당신의 샤워가 바뀌는 순간</> : <>With 100% Himalayan pink salt,<br/>the moment your shower changes</>}
                 </h2>
               </div>

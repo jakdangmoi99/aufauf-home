@@ -6,7 +6,7 @@ export default function JuicyLineSection({ ko }: { ko: boolean }) {
   return (
     <section id="juicy" className="scroll-mt-16">
       {/* ── A. LINE HERO ── */}
-      <div className="relative overflow-hidden" style={{ minHeight: "clamp(480px, 60vw, 640px)" }}>
+      <div className="relative overflow-hidden" style={{ minHeight: "clamp(260px, 50vw, 640px)" }}>
         {/* Full-width image background */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/juicy-hero.png" alt="Juicy Body Wash" className="absolute inset-0 w-full h-full object-cover" />
@@ -14,7 +14,7 @@ export default function JuicyLineSection({ ko }: { ko: boolean }) {
         <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,.35) 0%, rgba(0,0,0,.1) 50%, transparent 100%)" }} />
 
         {/* Floating text content */}
-        <div className="relative z-10 max-w-[1200px] mx-auto h-full flex flex-col justify-between p-8 md:p-14 md:py-16" style={{ minHeight: "clamp(480px, 60vw, 640px)" }}>
+        <div className="relative z-10 max-w-[1200px] mx-auto h-full flex flex-col justify-between p-6 md:p-14 md:py-16" style={{ minHeight: "clamp(260px, 50vw, 640px)" }}>
           <span className="inline-flex items-center gap-2.5 self-start px-5 py-2.5 rounded-full bg-white/20 backdrop-blur-sm text-[16px] font-medium text-white">
             <span className="relative flex h-2.5 w-2.5">
               <span className="absolute inset-0 rounded-full bg-white animate-ping opacity-60" />
@@ -30,7 +30,7 @@ export default function JuicyLineSection({ ko }: { ko: boolean }) {
               </button>
               <div>
                 <p className="font-[var(--font-fredoka)] text-[16px] font-semibold uppercase tracking-[.14em] text-white/80 mb-2">JUICY BODY WASH</p>
-                <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(28px,5vw,42px)] leading-[1.12] text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,.15)" }}>
+                <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(22px,5vw,42px)] leading-[1.12] text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,.15)" }}>
                   {ko ? <>상큼한 열대과일 향,<br/>경쾌한 샤워</> : <>Fresh tropical scents,<br/>a shower with a bounce</>}
                 </h2>
               </div>

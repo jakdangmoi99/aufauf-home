@@ -30,14 +30,11 @@ export default function SaltLineSection({ ko }: { ko: boolean }) {
             Now Playing · Himalayan Pink Salt Therapy
           </span>
 
-          <div className="mt-auto pt-12">
+          <div className="mt-auto pt-12 hidden md:block">
             <div className="flex items-end gap-6">
-              <button className="flex-shrink-0 w-[72px] h-[72px] rounded-full bg-white/20 backdrop-blur-sm shadow-[0_8px_28px_rgba(0,0,0,.15)] flex items-center justify-center hover:bg-white/30 hover:scale-105 transition-all" aria-label="Play">
-                <svg width="24" height="26" viewBox="0 0 20 22" fill="none"><path d="M2 1L18 11L2 21V1Z" fill="white" /></svg>
-              </button>
               <div>
                 <p className="font-[var(--font-fredoka)] text-[16px] font-semibold uppercase tracking-[.14em] text-white/80 mb-2">4-IN-1 BATH POWERHOUSE</p>
-                <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(22px,5vw,42px)] leading-[1.12] text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,.15)" }}>
+                <h2 className="font-[var(--font-fredoka)] font-bold text-[42px] leading-[1.12] text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,.15)" }}>
                   {ko ? <>100% 히말라야 핑크 솔트로,<br/>당신의 샤워가 바뀌는 순간</> : <>With 100% Himalayan pink salt,<br/>the moment your shower changes</>}
                 </h2>
               </div>

@@ -17,7 +17,7 @@ export default function Home() {
   const ko = lang === "ko";
 
   return (
-    <div className="min-h-screen" style={{ background: "#F6F1EA" }}>
+    <div className="min-h-screen" style={{ background: "#f7f6f3" }}>
       <Header lang={lang} setLang={setLang} ko={ko} activePage="home" />
 
       <Hero ko={ko} />

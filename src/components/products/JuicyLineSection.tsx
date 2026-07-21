@@ -6,37 +6,33 @@ export default function JuicyLineSection({ ko }: { ko: boolean }) {
   return (
     <section id="juicy" className="scroll-mt-16">
       {/* ── A. LINE HERO ── */}
-      <div className="relative overflow-hidden" style={{ background: "linear-gradient(160deg, #f0c89a 0%, #FBF0DC 40%, #F5E3EC 100%)" }}>
-        <div className="absolute inset-0" style={{ backgroundImage: "repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 2px, transparent 2px 28px)", animation: "auf-wave 9s linear infinite" }} />
+      <div className="relative overflow-hidden" style={{ minHeight: "clamp(480px, 60vw, 640px)" }}>
+        {/* Full-width image background */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/juicy-hero.png" alt="Juicy Body Wash" className="absolute inset-0 w-full h-full object-cover" />
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,.35) 0%, rgba(0,0,0,.1) 50%, transparent 100%)" }} />
 
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 items-stretch" style={{ minHeight: "clamp(480px, 60vw, 640px)" }}>
-          {/* Image first on desktop (left) */}
-          <div className="relative min-h-[320px] md:min-h-0 order-first">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/juicy-main.png" alt="Juicy Body Wash" className="absolute inset-0 w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-l from-[#FBF0DC]/40 to-transparent hidden md:block" />
-          </div>
-
-          <div className="relative z-10 flex flex-col justify-between p-8 md:p-14 md:py-16">
-            <span className="inline-flex items-center gap-2.5 self-start px-5 py-2.5 rounded-full bg-white/60 backdrop-blur-sm text-[16px] font-medium" style={{ color: "#993C1D" }}>
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inset-0 rounded-full bg-[#E8541C] animate-ping opacity-60" />
-                <span className="relative rounded-full w-2.5 h-2.5 bg-[#E8541C]" />
-              </span>
-              Now Playing · Juicy Body Wash
+        {/* Floating text content */}
+        <div className="relative z-10 max-w-[1200px] mx-auto h-full flex flex-col justify-between p-8 md:p-14 md:py-16" style={{ minHeight: "clamp(480px, 60vw, 640px)" }}>
+          <span className="inline-flex items-center gap-2.5 self-start px-5 py-2.5 rounded-full bg-white/20 backdrop-blur-sm text-[16px] font-medium text-white">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inset-0 rounded-full bg-white animate-ping opacity-60" />
+              <span className="relative rounded-full w-2.5 h-2.5 bg-white" />
             </span>
+            Now Playing · Juicy Body Wash
+          </span>
 
-            <div className="mt-auto pt-12">
-              <div className="flex items-end gap-6">
-                <button className="flex-shrink-0 w-[72px] h-[72px] rounded-full bg-white shadow-[0_8px_28px_rgba(232,84,28,.15)] flex items-center justify-center hover:scale-105 transition-transform" aria-label="Play">
-                  <svg width="24" height="26" viewBox="0 0 20 22" fill="none"><path d="M2 1L18 11L2 21V1Z" fill="#E8541C" /></svg>
-                </button>
-                <div>
-                  <p className="font-[var(--font-fredoka)] text-[16px] font-semibold uppercase tracking-[.14em] text-[#E8541C] mb-2">JUICY BODY WASH</p>
-                  <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(28px,5vw,42px)] leading-[1.12] text-[#993C1D]">
-                    {ko ? <>상큼한 열대과일 향,<br/>경쾌한 샤워</> : <>Fresh tropical scents,<br/>a shower with a bounce</>}
-                  </h2>
-                </div>
+          <div className="mt-auto pt-12">
+            <div className="flex items-end gap-6">
+              <button className="flex-shrink-0 w-[72px] h-[72px] rounded-full bg-white/20 backdrop-blur-sm shadow-[0_8px_28px_rgba(0,0,0,.15)] flex items-center justify-center hover:bg-white/30 hover:scale-105 transition-all" aria-label="Play">
+                <svg width="24" height="26" viewBox="0 0 20 22" fill="none"><path d="M2 1L18 11L2 21V1Z" fill="white" /></svg>
+              </button>
+              <div>
+                <p className="font-[var(--font-fredoka)] text-[16px] font-semibold uppercase tracking-[.14em] text-white/80 mb-2">JUICY BODY WASH</p>
+                <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(28px,5vw,42px)] leading-[1.12] text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,.15)" }}>
+                  {ko ? <>상큼한 열대과일 향,<br/>경쾌한 샤워</> : <>Fresh tropical scents,<br/>a shower with a bounce</>}
+                </h2>
               </div>
             </div>
           </div>
@@ -47,18 +43,25 @@ export default function JuicyLineSection({ ko }: { ko: boolean }) {
       <div className="bg-white border-b border-[#241E1A]/8">
         <div className="max-w-[900px] mx-auto px-6 py-14 md:py-16 text-center">
           <p className="font-[var(--font-cormorant)] italic text-[clamp(22px,3.2vw,30px)] leading-[1.6] text-[#993C1D]">
-            {ko ? "부드럽고 풍성한 거품이 피부를 순하게 — 샤워가 즐거워지는 시간" : "A soft, rich lather that cleanses gently — shower time made fun"}
+            {ko ? (<>부드럽고 풍성한 거품이 피부를 순하게 —<br/>샤워가 즐거워지는 시간</>) : (<>A soft, rich lather that cleanses gently —<br/>shower time made fun</>)}
           </p>
           <div className="flex flex-wrap justify-center gap-3 mt-7">
-            {(ko ? ["실리콘·파라벤 프리", "약산성", "500·1000·2000ml"] : ["Silicone & paraben free", "Mildly acidic", "500·1000·2000ml"]).map((s) => (
+            {(ko ? ["실리콘·파라벤 프리", "약산성", "열대과일 향", "풍성한 거품", "500·1000·2000ml"] : ["Silicone & paraben free", "Mildly acidic", "Tropical fruit scent", "Rich lather", "500·1000·2000ml"]).map((s) => (
               <span key={s} className="px-6 py-2.5 rounded-full text-[16px] font-medium bg-[#FBF0DC] text-[#993C1D]">{s}</span>
             ))}
           </div>
         </div>
       </div>
 
+      {/* ── Product title ── */}
+      <div className="max-w-[1200px] mx-auto px-6 pt-20 pb-2 text-center">
+        <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(32px,5.5vw,48px)] text-[#993C1D] tracking-tight">
+          {ko ? "어푸어푸 쥬이시 바디워시" : "auf auf Juicy Body Wash"}
+        </h2>
+      </div>
+
       {/* ── C. SECTION HEADING ── */}
-      <div className="max-w-[1200px] mx-auto px-6 pt-20 pb-6 text-center">
+      <div className="max-w-[1200px] mx-auto px-6 pt-2 pb-6 text-center">
         <h3 className="font-[var(--font-fredoka)] font-bold text-[clamp(24px,4vw,32px)] text-[#E8541C]">
           {ko ? "3가지 향, 3가지 기분" : "Three scents, three moods"}
         </h3>
@@ -72,11 +75,12 @@ export default function JuicyLineSection({ ko }: { ko: boolean }) {
         {juicyProducts.map((p, i) => (
           <div
             key={p.num}
-            className="rounded-3xl overflow-hidden transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_24px_64px_rgba(36,30,26,.12)]"
+            className="rounded-3xl overflow-hidden transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(36,30,26,.18)]"
             style={{
               marginTop: i > 0 ? "clamp(32px, 5vw, 48px)" : 0,
               background: `linear-gradient(135deg, ${p.soft}, ${p.soft}66)`,
-              boxShadow: "0 8px 32px rgba(36,30,26,.06)",
+              boxShadow: "0 6px 24px rgba(36,30,26,.12)",
+              border: `1px solid ${p.soft}`,
             }}
           >
             <div className={`grid grid-cols-1 md:grid-cols-2 items-center ${i % 2 === 1 ? "md:[direction:rtl]" : ""}`}>

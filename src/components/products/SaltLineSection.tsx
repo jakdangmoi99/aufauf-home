@@ -6,38 +6,42 @@ export default function SaltLineSection({ ko }: { ko: boolean }) {
   return (
     <section id="salt" className="scroll-mt-16">
       {/* ── A. LINE HERO ── */}
-      <div className="relative overflow-hidden" style={{ background: "linear-gradient(160deg, #b8dce9 0%, #DCEFF4 40%, #E7F1F4 100%)" }}>
-        <div className="absolute inset-0" style={{ backgroundImage: "repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 2px, transparent 2px 28px)", animation: "auf-wave 9s linear infinite" }} />
+      <div className="relative overflow-hidden" style={{ minHeight: "clamp(480px, 60vw, 640px)" }}>
+        {/* Full-width video background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/images/salt-hero-video.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,.35) 0%, rgba(0,0,0,.1) 50%, transparent 100%)" }} />
 
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 items-stretch" style={{ minHeight: "clamp(480px, 60vw, 640px)" }}>
-          <div className="relative z-10 flex flex-col justify-between p-8 md:p-14 md:py-16">
-            <span className="inline-flex items-center gap-2.5 self-start px-5 py-2.5 rounded-full bg-white/60 backdrop-blur-sm text-[16px] font-medium" style={{ color: "#155874" }}>
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inset-0 rounded-full bg-[#2E9FC4] animate-ping opacity-60" />
-                <span className="relative rounded-full w-2.5 h-2.5 bg-[#2E9FC4]" />
-              </span>
-              Now Playing · Himalayan Pink Salt Therapy
+        {/* Floating text content */}
+        <div className="relative z-10 max-w-[1200px] mx-auto h-full flex flex-col justify-between p-8 md:p-14 md:py-16" style={{ minHeight: "clamp(480px, 60vw, 640px)" }}>
+          <span className="inline-flex items-center gap-2.5 self-start px-5 py-2.5 rounded-full bg-white/20 backdrop-blur-sm text-[16px] font-medium text-white">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inset-0 rounded-full bg-white animate-ping opacity-60" />
+              <span className="relative rounded-full w-2.5 h-2.5 bg-white" />
             </span>
+            Now Playing · Himalayan Pink Salt Therapy
+          </span>
 
-            <div className="mt-auto pt-12">
-              <div className="flex items-end gap-6">
-                <button className="flex-shrink-0 w-[72px] h-[72px] rounded-full bg-white shadow-[0_8px_28px_rgba(46,159,196,.2)] flex items-center justify-center hover:scale-105 transition-transform" aria-label="Play">
-                  <svg width="24" height="26" viewBox="0 0 20 22" fill="none"><path d="M2 1L18 11L2 21V1Z" fill="#2E9FC4" /></svg>
-                </button>
-                <div>
-                  <p className="font-[var(--font-fredoka)] text-[16px] font-semibold uppercase tracking-[.14em] text-[#2E9FC4] mb-2">4-IN-1 BATH POWERHOUSE</p>
-                  <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(28px,5vw,42px)] leading-[1.12] text-[#155874]">
-                    {ko ? <>하나로 네 가지,<br/>당신의 샤워가 바뀌는 순간</> : <>Four in one,<br/>the moment your shower changes</>}
-                  </h2>
-                </div>
+          <div className="mt-auto pt-12">
+            <div className="flex items-end gap-6">
+              <button className="flex-shrink-0 w-[72px] h-[72px] rounded-full bg-white/20 backdrop-blur-sm shadow-[0_8px_28px_rgba(0,0,0,.15)] flex items-center justify-center hover:bg-white/30 hover:scale-105 transition-all" aria-label="Play">
+                <svg width="24" height="26" viewBox="0 0 20 22" fill="none"><path d="M2 1L18 11L2 21V1Z" fill="white" /></svg>
+              </button>
+              <div>
+                <p className="font-[var(--font-fredoka)] text-[16px] font-semibold uppercase tracking-[.14em] text-white/80 mb-2">4-IN-1 BATH POWERHOUSE</p>
+                <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(28px,5vw,42px)] leading-[1.12] text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,.15)" }}>
+                  {ko ? <>100% 히말라야 핑크 솔트로,<br/>당신의 샤워가 바뀌는 순간</> : <>With 100% Himalayan pink salt,<br/>the moment your shower changes</>}
+                </h2>
               </div>
             </div>
-          </div>
-
-          <div className="relative min-h-[320px] md:min-h-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/salt-main.png" alt="Salt Therapy" className="absolute inset-0 w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#DCEFF4]/40 to-transparent hidden md:block" />
           </div>
         </div>
       </div>
@@ -46,18 +50,25 @@ export default function SaltLineSection({ ko }: { ko: boolean }) {
       <div className="bg-white border-b border-[#241E1A]/8">
         <div className="max-w-[900px] mx-auto px-6 py-14 md:py-16 text-center">
           <p className="font-[var(--font-cormorant)] italic text-[clamp(22px,3.2vw,30px)] leading-[1.6] text-[#155874]">
-            {ko ? "씻고, 각질 케어하고, 진정하고, 버블배스까지 — 매일의 샤워가 스파가 되는 시간" : "Cleanse, exfoliate, soothe, and soak — every shower becomes a spa"}
+            {ko ? (<>씻고, 각질 케어하고, 진정하고, 버블배스까지 —<br/>매일의 샤워가 스파가 되는 시간</>) : (<>Cleanse, exfoliate, soothe, and soak —<br/>every shower becomes a spa</>)}
           </p>
           <div className="flex flex-wrap justify-center gap-3 mt-7">
-            {(ko ? ["4-in-1", "자연유래 86.8%", "500·1000ml"] : ["4-in-1", "86.8% naturally derived", "500·1000ml"]).map((s) => (
+            {(ko ? ["4-in-1", "자연유래 86.8%", "100% 히말라야 핑크 솔트", "살구씨", "500·1000ml"] : ["4-in-1", "86.8% naturally derived", "100% Himalayan pink salt", "Apricot seeds", "500·1000ml"]).map((s) => (
               <span key={s} className="px-6 py-2.5 rounded-full text-[16px] font-medium bg-[#E7F1F4] text-[#155874]">{s}</span>
             ))}
           </div>
         </div>
       </div>
 
+      {/* ── Product title ── */}
+      <div className="max-w-[1200px] mx-auto px-6 pt-20 pb-2 text-center">
+        <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(32px,5.5vw,48px)] text-[#155874] tracking-tight">
+          {ko ? "어푸어푸 바디 스크럽워시" : "auf auf Body Scrub Wash"}
+        </h2>
+      </div>
+
       {/* ── C. SECTION HEADING ── */}
-      <div className="max-w-[1200px] mx-auto px-6 pt-20 pb-6 text-center">
+      <div className="max-w-[1200px] mx-auto px-6 pt-2 pb-6 text-center">
         <h3 className="font-[var(--font-fredoka)] font-bold text-[clamp(24px,4vw,32px)] text-[#155874]">
           {ko ? "4가지 향, 4가지 기분" : "Four scents, four moods"}
         </h3>
@@ -71,11 +82,12 @@ export default function SaltLineSection({ ko }: { ko: boolean }) {
         {saltProducts.map((p, i) => (
           <div
             key={p.num}
-            className="rounded-3xl overflow-hidden transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_24px_64px_rgba(36,30,26,.12)]"
+            className="rounded-3xl overflow-hidden transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(36,30,26,.18)]"
             style={{
               marginTop: i > 0 ? "clamp(32px, 5vw, 48px)" : 0,
               background: `linear-gradient(135deg, ${p.color}45, ${p.color}20)`,
-              boxShadow: "0 8px 32px rgba(36,30,26,.06)",
+              boxShadow: "0 6px 24px rgba(36,30,26,.12)",
+              border: `1px solid ${p.color}30`,
             }}
           >
             <div className={`grid grid-cols-1 md:grid-cols-2 items-center ${i % 2 === 1 ? "md:[direction:rtl]" : ""}`}>

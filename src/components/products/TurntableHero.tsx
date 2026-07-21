@@ -10,7 +10,7 @@ const lineups = [
     desc_ko: "4가지 향 · 4-in-1 케어",
     desc_en: "4 scents · 4-in-1 care",
     color: "#2E9FC4",
-    mainImg: "/images/salt-main.png",
+    mainImg: "/images/tape-salt.png",
     tapeColor: "#d6ecf4",
     tapeBorder: "#a8d4e8",
     labelColor: "#155874",
@@ -22,7 +22,7 @@ const lineups = [
     desc_ko: "3가지 향 · 상큼한 열대과일",
     desc_en: "3 scents · Fresh tropical fruits",
     color: "#E8541C",
-    mainImg: "/images/juicy-main.png",
+    mainImg: "/images/tape-juicy.png",
     tapeColor: "#fce8d0",
     tapeBorder: "#f0c89a",
     labelColor: "#993C1D",
@@ -124,7 +124,6 @@ export default function TurntableHero({ ko }: { ko: boolean }) {
   return (
     <section
       className="relative mt-16 overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #f7f6f3 0%, #f0efec 100%)" }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
@@ -133,6 +132,16 @@ export default function TurntableHero({ ko }: { ko: boolean }) {
         if (Math.abs(dx) > 34) nav(dx < 0 ? 1 : -1);
       }}
     >
+      {/* Background image */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/images/hero-bg-3.png"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ filter: "blur(6px) brightness(0.9) saturate(1.1)", transform: "scale(1.03)" }}
+      />
+      <div className="absolute inset-0" style={{ background: "rgba(247,246,243,.05)" }} />
+
       <style>{`
         @keyframes tape-spin { to { transform: rotate(360deg); } }
         @keyframes dot-pulse { 0%,100% { opacity:1; } 50% { opacity:.3; } }
@@ -141,14 +150,14 @@ export default function TurntableHero({ ko }: { ko: boolean }) {
       <div className="relative max-w-[1100px] mx-auto px-5 py-10 md:py-14">
         {/* Header */}
         <div className="text-center mb-7 md:mb-9">
-          <span className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#2E9FC4]/8 text-[15px] font-[var(--font-fredoka)] text-[#2E9FC4] tracking-wider">
+          <span className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white/15 backdrop-blur-sm text-[15px] font-[var(--font-fredoka)] text-white/80 tracking-wider">
             <span className="w-2 h-2 rounded-full bg-[#2E9FC4]" style={{ animation: "dot-pulse 2s ease-in-out infinite" }} />
             Now Playing
           </span>
-          <h1 className="font-[var(--font-fredoka)] font-bold text-[clamp(30px,6vw,50px)] text-[#241E1A] mt-4 tracking-tight">
+          <h1 className="font-[var(--font-fredoka)] font-bold text-[clamp(30px,6vw,50px)] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,.15)] mt-4 tracking-tight">
             Bathtime Playlist
           </h1>
-          <p className="text-[#241E1A]/40 mt-2 font-[var(--font-cormorant)] italic text-[clamp(18px,2.5vw,22px)]">
+          <p className="text-white/50 mt-2 font-[var(--font-cormorant)] italic text-[clamp(18px,2.5vw,22px)]">
             {ko ? "오늘의 플레이리스트를 골라보세요" : "Pick your playlist for today"}
           </p>
         </div>
@@ -184,17 +193,17 @@ export default function TurntableHero({ ko }: { ko: boolean }) {
                 {lineups.map((l) => (
                   <div key={l.id} className="relative h-full" style={{ width: `${100 / total}%` }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={l.mainImg} alt={l.id} className="absolute inset-0 w-full h-full object-cover" />
+                    <img src={l.mainImg} alt={l.id} className="absolute inset-0 w-full h-full object-cover object-top" />
                   </div>
                 ))}
               </div>
 
               {/* Reels (positioned over image, opaque backgrounds block image) */}
               <div className="absolute top-1/2 left-[30%] -translate-x-1/2 -translate-y-1/2 z-[6]">
-                <CassetteReel size={90} tapeRadius={38} speed={8} />
+                <CassetteReel size={90} tapeRadius={32} speed={8} />
               </div>
               <div className="absolute top-1/2 right-[30%] translate-x-1/2 -translate-y-1/2 z-[6]">
-                <CassetteReel size={90} tapeRadius={30} speed={6} />
+                <CassetteReel size={90} tapeRadius={32} speed={6} />
               </div>
 
               {/* (tape path removed — reels only) */}
@@ -220,13 +229,12 @@ export default function TurntableHero({ ko }: { ko: boolean }) {
           </div>
 
           {/* Nav arrows */}
-          <button onClick={() => nav(-1)} className="absolute left-[-14px] md:left-[-24px] top-1/2 -translate-y-1/2 w-11 h-11 md:w-12 md:h-12 rounded-full bg-white shadow-[0_4px_16px_rgba(36,30,26,.1)] flex items-center justify-center text-[#241E1A] text-2xl cursor-pointer border-none hover:bg-[#241E1A] hover:text-white transition-colors z-10">‹</button>
-          <button onClick={() => nav(1)} className="absolute right-[-14px] md:right-[-24px] top-1/2 -translate-y-1/2 w-11 h-11 md:w-12 md:h-12 rounded-full bg-white shadow-[0_4px_16px_rgba(36,30,26,.1)] flex items-center justify-center text-[#241E1A] text-2xl cursor-pointer border-none hover:bg-[#241E1A] hover:text-white transition-colors z-10">›</button>
+          <button onClick={() => nav(-1)} className="absolute left-[-44px] md:left-[-72px] top-1/2 -translate-y-1/2 px-3 py-6 text-white/50 text-5xl md:text-6xl cursor-pointer border-none bg-transparent hover:text-white/90 transition-colors z-10 select-none font-light" style={{ textShadow: "0 2px 10px rgba(0,0,0,.15)" }}>‹</button>
+          <button onClick={() => nav(1)} className="absolute right-[-44px] md:right-[-72px] top-1/2 -translate-y-1/2 px-3 py-6 text-white/50 text-5xl md:text-6xl cursor-pointer border-none bg-transparent hover:text-white/90 transition-colors z-10 select-none font-light" style={{ textShadow: "0 2px 10px rgba(0,0,0,.15)" }}>›</button>
         </div>
 
         {/* CTA */}
         <div className="text-center mt-7">
-          <p className="text-[16px] text-[#241E1A]/45 mb-4">{ko ? lineup.desc_ko : lineup.desc_en}</p>
           <div className="flex justify-center gap-2.5 mb-5">
             {lineups.map((l, i) => (
               <button key={l.id}

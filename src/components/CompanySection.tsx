@@ -16,13 +16,13 @@ export default function CompanySection({ ko }: CompanySectionProps) {
           <div>
             <h2 className="font-[var(--font-fredoka)] font-semibold text-[clamp(28px,3.6vw,44px)] leading-[1.1] tracking-tight mb-[18px]">
               {ko
-                ? "잘 씻는 것에서 시작되는 뷰티"
-                : "Beauty begins with a good wash"}
+                ? "잘 씻어내는 것에서 시작되는 뷰티"
+                : "Beauty begins with a good wash off"}
             </h2>
             <p className="text-base leading-[1.8] text-[#241E1A]/72 mb-[26px]">
               {ko
-                ? '"우리는 모든 뷰티의 시작은 잘 씻는 것에서 시작된다고 믿습니다." 어푸어푸는 머리부터 발끝까지 몸을 깨우고, 기분 좋은 휴식과 스트레스 해소의 경험을 선사하며 몸과 마음을 함께 씻어줍니다.'
-                : '"We believe all beauty begins with washing well." auf auf wakes up every part of you, head to toe — a feel-good pause that washes body and mind together.'}
+                ? '"우리는 모든 뷰티의 시작은 잘 씻어 내는 것에서 시작된다고 믿습니다." 어푸어푸는 머리부터 발끝까지 몸을 깨우고, 기분 좋은 휴식과 스트레스 해소의 경험을 선사하며 몸과 마음을 함께 씻어줍니다.'
+                : '"We believe all beauty begins with washing off well." auf auf wakes up every part of you, head to toe — a feel-good pause that washes body and mind together.'}
             </p>
             <div className="flex flex-col gap-3.5">
               <div className="border-l-2 border-[#2E9FC4] pl-[15px]">

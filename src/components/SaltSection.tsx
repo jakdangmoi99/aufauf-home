@@ -44,9 +44,9 @@ function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
           .map((item, idx) => (
           <a
             key={item.num}
-            href="#contact"
+            href="/products#salt"
             onClick={(e) => handleTap(item.num, e)}
-            className={`group relative flex flex-col items-center text-center rounded-[26px] px-[18px] pt-7 pb-6 overflow-hidden shadow-[0_12px_34px_rgba(36,30,26,.05)] transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_22px_46px_rgba(36,30,26,.12)] ${idx > 0 ? "hidden md:flex" : ""}`}
+            className={`group relative flex flex-col items-center text-center rounded-[26px] px-[18px] pt-7 pb-6 overflow-hidden shadow-[0_12px_34px_rgba(36,30,26,.08)] transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_22px_46px_rgba(36,30,26,.14)] ${idx > 0 ? "hidden md:flex" : ""}`}
             style={{ background: `linear-gradient(180deg, ${item.color}, rgba(255,255,255,.5))` }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -164,7 +164,7 @@ export default function SaltSection({ ko }: SaltSectionProps) {
   return (
     <div className="max-w-[1120px] mx-auto mt-10 px-4 md:px-0">
       {/* Salt Banner */}
-      <div className="grid grid-cols-1 md:grid-cols-[.95fr_1.05fr] gap-0 items-stretch rounded-[34px] overflow-hidden bg-white shadow-[0_20px_60px_rgba(36,30,26,.06)]">
+      <div className="grid grid-cols-1 md:grid-cols-[.95fr_1.05fr] gap-0 items-stretch rounded-[34px] overflow-hidden bg-white shadow-[0_20px_60px_rgba(36,30,26,.1)]">
         {/* Left: branding */}
         <div className="flex flex-col justify-center p-[36px_clamp(22px,3vw,44px)]">
           <span className="font-[var(--font-fredoka)] text-[13px] tracking-[.14em] uppercase text-[#B0544F]">

@@ -62,7 +62,7 @@ function JuicyGrid({ juicy, ko }: { juicy: typeof juicyData; ko: boolean }) {
         return (
           <a
             key={item.num}
-            href="#contact"
+            href="/products#juicy"
             onClick={(e) => handleTap(item.num, e)}
             className="group relative flex flex-col items-center text-center rounded-[26px] px-[18px] pt-7 pb-6 overflow-hidden transition-transform duration-400 hover:-translate-y-1.5"
             style={{ background: item.soft }}
@@ -112,7 +112,7 @@ export default function JuicySection({ ko }: JuicySectionProps) {
   return (
     <div className="max-w-[1120px] mx-auto px-4 md:px-0">
       {/* Juicy Banner */}
-      <div className="grid grid-cols-1 md:grid-cols-[1.05fr_.95fr] gap-0 items-stretch rounded-[34px] overflow-hidden bg-white shadow-[0_20px_60px_rgba(36,30,26,.06)]">
+      <div className="grid grid-cols-1 md:grid-cols-[1.05fr_.95fr] gap-0 items-stretch rounded-[34px] overflow-hidden bg-white shadow-[0_20px_60px_rgba(36,30,26,.1)]">
         {/* Left: main product image */}
         <div className="relative min-h-[280px] md:min-h-[524px] overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}

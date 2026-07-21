@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
   const [offset, setOffset] = useState(0);
-  const [tapped, setTapped] = useState<string | null>(null);
+  const [tapState, setTapState] = useState<Record<string, "hover" | "button">>({});
   const maxOffsetMobile = salt.length - 1;
   const prev = () => setOffset((o) => Math.max(0, o - 1));
   const next = () => setOffset((o) => Math.min(salt.length - 1, o + 1));
@@ -12,7 +12,12 @@ function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
   const handleTap = (num: string, e: React.MouseEvent) => {
     if ("ontouchstart" in window) {
       e.preventDefault();
-      setTapped(tapped === num ? null : num);
+      setTapState((prev) => {
+        const current = prev[num];
+        if (!current) return { [num]: "hover" };
+        if (current === "hover") return { [num]: "button" };
+        return {};
+      });
     }
   };
 
@@ -54,8 +59,17 @@ function SaltCarousel({ salt, ko }: { salt: typeof saltData; ko: boolean }) {
                 {ko ? "자세히 보기" : "See details"}
               </span>
             </a>
-            {/* Mobile: tap overlay */}
-            {tapped === item.num && (
+            {/* Mobile: 1st tap → hover image */}
+            {(tapState[item.num] === "hover" || tapState[item.num] === "button") && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={item.hover}
+                alt={`${item.en} detail`}
+                className="absolute inset-0 w-full h-full object-cover z-10 rounded-[26px] md:hidden animate-[fadeIn_.3s_ease]"
+              />
+            )}
+            {/* Mobile: 2nd tap → dark overlay + button */}
+            {tapState[item.num] === "button" && (
               <a href="/products#salt" className="absolute inset-0 z-20 rounded-[26px] flex items-center justify-center bg-[#241E1A]/40 md:hidden animate-[fadeIn_.3s_ease]">
                 <span className="px-7 py-3 rounded-full bg-white text-[16px] font-[var(--font-fredoka)] font-semibold text-[#241E1A] shadow-lg">
                   {ko ? "자세히 보기" : "See details"}

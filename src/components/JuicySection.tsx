@@ -45,20 +45,25 @@ const juicy = [
 ];
 
 function JuicyGrid({ juicy, ko }: { juicy: typeof juicyData; ko: boolean }) {
-  const [tapped, setTapped] = useState<string | null>(null);
+  // Mobile tap state: null → "hover" (show image) → "button" (show CTA) → null
+  const [tapState, setTapState] = useState<Record<string, "hover" | "button">>({});
 
   const handleTap = (num: string, e: React.MouseEvent) => {
-    // On touch devices, toggle hover image instead of navigating
     if ("ontouchstart" in window) {
       e.preventDefault();
-      setTapped(tapped === num ? null : num);
+      setTapState((prev) => {
+        const current = prev[num];
+        if (!current) return { [num]: "hover" };
+        if (current === "hover") return { [num]: "button" };
+        return {};
+      });
     }
   };
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px] mt-[18px]">
       {juicy.map((item) => {
-        const active = tapped === item.num;
+        const state = tapState[item.num];
         return (
           <div
             key={item.num}
@@ -72,8 +77,17 @@ function JuicyGrid({ juicy, ko }: { juicy: typeof juicyData; ko: boolean }) {
                 {ko ? "자세히 보기" : "See details"}
               </span>
             </a>
-            {/* Mobile: tap overlay */}
-            {active && (
+            {/* Mobile: 1st tap → hover image */}
+            {(state === "hover" || state === "button") && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={item.hover}
+                alt={`${item.en} detail`}
+                className="absolute inset-0 w-full h-full object-cover z-10 rounded-[26px] md:hidden animate-[fadeIn_.3s_ease]"
+              />
+            )}
+            {/* Mobile: 2nd tap → dark overlay + button */}
+            {state === "button" && (
               <a href="/products#juicy" className="absolute inset-0 z-20 rounded-[26px] flex items-center justify-center bg-[#241E1A]/40 md:hidden animate-[fadeIn_.3s_ease]">
                 <span className="px-7 py-3 rounded-full bg-white text-[16px] font-[var(--font-fredoka)] font-semibold text-[#241E1A] shadow-lg">
                   {ko ? "자세히 보기" : "See details"}

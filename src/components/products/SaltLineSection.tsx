@@ -22,23 +22,19 @@ export default function SaltLineSection({ ko }: { ko: boolean }) {
 
         {/* Floating text content */}
         <div className="relative z-10 max-w-[1200px] mx-auto h-full flex flex-col justify-between p-6 md:p-14 md:py-16" style={{ minHeight: "clamp(260px, 50vw, 640px)" }}>
-          <span className="inline-flex items-center gap-2.5 self-start px-5 py-2.5 rounded-full bg-white/20 backdrop-blur-sm text-[16px] font-medium text-white">
-            <span className="relative flex h-2.5 w-2.5">
+          <span className="inline-flex items-center gap-1.5 md:gap-2.5 self-start px-3 py-1.5 md:px-5 md:py-2.5 rounded-full bg-white/20 backdrop-blur-sm text-[11px] md:text-[16px] font-medium text-white">
+            <span className="relative flex h-1.5 w-1.5 md:h-2.5 md:w-2.5">
               <span className="absolute inset-0 rounded-full bg-white animate-ping opacity-60" />
-              <span className="relative rounded-full w-2.5 h-2.5 bg-white" />
+              <span className="relative rounded-full w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-white" />
             </span>
-            Now Playing · Himalayan Pink Salt Therapy
+            Now Playing<span className="hidden md:inline"> · Himalayan Pink Salt Therapy</span>
           </span>
 
-          <div className="mt-auto pt-12 hidden md:block">
-            <div className="flex items-end gap-6">
-              <div>
-                <p className="font-[var(--font-fredoka)] text-[16px] font-semibold uppercase tracking-[.14em] text-white/80 mb-2">4-IN-1 BATH POWERHOUSE</p>
-                <h2 className="font-[var(--font-fredoka)] font-bold text-[42px] leading-[1.12] text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,.15)" }}>
-                  {ko ? <>100% 히말라야 핑크 솔트로,<br/>당신의 샤워가 바뀌는 순간</> : <>With 100% Himalayan pink salt,<br/>the moment your shower changes</>}
-                </h2>
-              </div>
-            </div>
+          <div className="mt-auto pt-6 md:pt-12">
+            <p className="font-[var(--font-fredoka)] text-[14px] md:text-[16px] font-semibold uppercase tracking-[.14em] text-white/80 mb-2">4-IN-1 BATH POWERHOUSE</p>
+            <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(20px,5vw,42px)] leading-[1.12] text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,.15)" }}>
+              {ko ? <>100% 히말라야 핑크 솔트로,<br/>당신의 샤워가 바뀌는 순간</> : <>With 100% Himalayan pink salt,<br/>the moment your shower changes</>}
+            </h2>
           </div>
         </div>
       </div>

@@ -15,26 +15,19 @@ export default function JuicyLineSection({ ko }: { ko: boolean }) {
 
         {/* Floating text content */}
         <div className="relative z-10 max-w-[1200px] mx-auto h-full flex flex-col justify-between p-6 md:p-14 md:py-16" style={{ minHeight: "clamp(260px, 50vw, 640px)" }}>
-          <span className="inline-flex items-center gap-2.5 self-start px-5 py-2.5 rounded-full bg-white/20 backdrop-blur-sm text-[16px] font-medium text-white">
-            <span className="relative flex h-2.5 w-2.5">
+          <span className="inline-flex items-center gap-1.5 md:gap-2.5 self-start px-3 py-1.5 md:px-5 md:py-2.5 rounded-full bg-white/20 backdrop-blur-sm text-[11px] md:text-[16px] font-medium text-white">
+            <span className="relative flex h-1.5 w-1.5 md:h-2.5 md:w-2.5">
               <span className="absolute inset-0 rounded-full bg-white animate-ping opacity-60" />
-              <span className="relative rounded-full w-2.5 h-2.5 bg-white" />
+              <span className="relative rounded-full w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-white" />
             </span>
-            Now Playing · Juicy Body Wash
+            Now Playing<span className="hidden md:inline"> · Juicy Body Wash</span>
           </span>
 
-          <div className="mt-auto pt-12">
-            <div className="flex items-end gap-6">
-              <button className="flex-shrink-0 w-[72px] h-[72px] rounded-full bg-white/20 backdrop-blur-sm shadow-[0_8px_28px_rgba(0,0,0,.15)] flex items-center justify-center hover:bg-white/30 hover:scale-105 transition-all" aria-label="Play">
-                <svg width="24" height="26" viewBox="0 0 20 22" fill="none"><path d="M2 1L18 11L2 21V1Z" fill="white" /></svg>
-              </button>
-              <div>
-                <p className="font-[var(--font-fredoka)] text-[16px] font-semibold uppercase tracking-[.14em] text-white/80 mb-2">JUICY BODY WASH</p>
-                <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(22px,5vw,42px)] leading-[1.12] text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,.15)" }}>
-                  {ko ? <>상큼한 열대과일 향,<br/>경쾌한 샤워</> : <>Fresh tropical scents,<br/>a shower with a bounce</>}
-                </h2>
-              </div>
-            </div>
+          <div className="mt-auto pt-6 md:pt-12">
+            <p className="font-[var(--font-fredoka)] text-[14px] md:text-[16px] font-semibold uppercase tracking-[.14em] text-white/80 mb-2">JUICY BODY WASH</p>
+            <h2 className="font-[var(--font-fredoka)] font-bold text-[clamp(20px,5vw,42px)] leading-[1.12] text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,.15)" }}>
+              {ko ? <>상큼한 열대과일 향,<br/>경쾌한 샤워</> : <>Fresh tropical scents,<br/>a shower with a bounce</>}
+            </h2>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useLang } from "@/hooks/useLang";
 import Header from "@/components/Header";
 import TurntableHero from "@/components/products/TurntableHero";
 import SaltLineSection from "@/components/products/SaltLineSection";
@@ -8,11 +8,8 @@ import JuicyLineSection from "@/components/products/JuicyLineSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
-export type Lang = "ko" | "en";
-
 export default function ProductsPage() {
-  const [lang, setLang] = useState<Lang>("ko");
-  const ko = lang === "ko";
+  const { lang, setLang, ko } = useLang();
 
   return (
     <div className="min-h-screen" style={{ background: "#f7f6f3" }}>

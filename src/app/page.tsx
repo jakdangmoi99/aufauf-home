@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useLang } from "@/hooks/useLang";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import JuicySection from "@/components/JuicySection";
@@ -10,11 +10,8 @@ import GlobalSection from "@/components/GlobalSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
-export type Lang = "ko" | "en";
-
 export default function Home() {
-  const [lang, setLang] = useState<Lang>("ko");
-  const ko = lang === "ko";
+  const { lang, setLang, ko } = useLang();
 
   return (
     <div className="min-h-screen" style={{ background: "#f7f6f3" }}>

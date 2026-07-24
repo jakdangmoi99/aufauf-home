@@ -7,14 +7,14 @@ export default function FounderMessage({ ko }: { ko: boolean }) {
         </span>
 
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-          {/* Founder photo — large */}
+          {/* Founder photo — full original */}
           <div className="flex-shrink-0">
-            <div className="w-[260px] h-[260px] md:w-[320px] md:h-[320px] rounded-3xl overflow-hidden shadow-[0_16px_48px_rgba(46,159,196,.15)] border-4 border-white">
+            <div className="rounded-3xl overflow-hidden shadow-[0_16px_48px_rgba(46,159,196,.15)] border-4 border-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/founder.jpg"
                 alt="Michelle Cha"
-                className="w-full h-full object-cover object-top"
+                className="w-[280px] md:w-[360px] h-auto"
               />
             </div>
             <div className="text-center mt-5">

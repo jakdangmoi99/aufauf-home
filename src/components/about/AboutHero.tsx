@@ -4,7 +4,7 @@ export default function AboutHero({ ko }: { ko: boolean }) {
       {/* Background image with subtle blur */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/hero-bg-3.png"
+        src="/images/hero-bg-4.png"
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
         style={{ filter: "blur(4px) brightness(0.95) saturate(1.1)", transform: "scale(1.02)" }}

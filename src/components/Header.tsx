@@ -6,7 +6,7 @@ interface HeaderProps {
   lang: "ko" | "en";
   setLang: (l: "ko" | "en") => void;
   ko: boolean;
-  activePage?: "home" | "products";
+  activePage?: "home" | "products" | "about";
 }
 
 export default function Header({ lang, setLang, ko, activePage = "home" }: HeaderProps) {
@@ -22,8 +22,9 @@ export default function Header({ lang, setLang, ko, activePage = "home" }: Heade
   const navLink = (page: string) =>
     activePage === page ? "text-[#2E9FC4]" : "";
 
-  const homeBase = activePage === "products" ? "/" : "";
-  const productsHref = activePage === "home" ? "/products" : "#";
+  const homeBase = activePage === "home" ? "" : "/";
+  const productsHref = activePage === "products" ? "#" : "/products";
+  const aboutHref = activePage === "about" ? "#" : "/about";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-[12px] bg-[#FAF5EC]/82 border-b border-[#241E1A]/8">
@@ -36,7 +37,7 @@ export default function Header({ lang, setLang, ko, activePage = "home" }: Heade
         <nav className="hidden md:flex gap-[clamp(32px,4.5vw,60px)] text-[18px] font-extrabold">
           <a href="/" className={navLink("home")}>{ko ? "홈" : "Home"}</a>
           <a href={productsHref} className={navLink("products")}>{ko ? "제품" : "Products"}</a>
-          <a href={`${homeBase}#company`}>{ko ? "어푸어푸란?" : "About AUF AUF"}</a>
+          <a href={aboutHref} className={navLink("about")}>{ko ? "어푸어푸란?" : "About AUF AUF"}</a>
           <a href={`${homeBase}#contact`}>{ko ? "문의하기" : "Contact"}</a>
         </nav>
 
@@ -61,7 +62,7 @@ export default function Header({ lang, setLang, ko, activePage = "home" }: Heade
         <nav className="md:hidden flex flex-col gap-4 px-6 pb-5 text-[18px] font-extrabold bg-[#FAF5EC]/95 backdrop-blur-[12px] border-t border-[#241E1A]/8">
           <a href="/" onClick={() => setMenuOpen(false)} className={navLink("home")}>{ko ? "홈" : "Home"}</a>
           <a href={productsHref} onClick={() => setMenuOpen(false)} className={navLink("products")}>{ko ? "제품" : "Products"}</a>
-          <a href={`${homeBase}#company`} onClick={() => setMenuOpen(false)}>{ko ? "어푸어푸란?" : "About AUF AUF"}</a>
+          <a href={aboutHref} onClick={() => setMenuOpen(false)} className={navLink("about")}>{ko ? "어푸어푸란?" : "About AUF AUF"}</a>
           <a href={`${homeBase}#contact`} onClick={() => setMenuOpen(false)}>{ko ? "문의하기" : "Contact"}</a>
         </nav>
       )}

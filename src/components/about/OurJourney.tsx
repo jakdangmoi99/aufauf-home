@@ -74,10 +74,10 @@ export default function OurJourney({ ko }: { ko: boolean }) {
         {popups.map((p, i) => (
           <div
             key={i}
-            className="flex-shrink-0 w-[260px] md:w-[300px] snap-start rounded-2xl overflow-hidden bg-white shadow-[0_4px_20px_rgba(36,30,26,.06)] hover:shadow-[0_12px_32px_rgba(36,30,26,.1)] transition-all duration-300 hover:-translate-y-1"
+            className="flex-shrink-0 w-[320px] md:w-[400px] snap-start rounded-2xl overflow-hidden bg-white shadow-[0_4px_20px_rgba(36,30,26,.06)] hover:shadow-[0_12px_32px_rgba(36,30,26,.1)] transition-all duration-300 hover:-translate-y-1"
           >
             {/* Image area */}
-            <div className="aspect-[4/3] flex items-center justify-center" style={{ background: p.color }}>
+            <div className="aspect-[3/2] flex items-center justify-center" style={{ background: p.color }}>
               {/* Placeholder — replace with real photo */}
               <span className="text-[#241E1A]/10 text-[40px] font-light">📷</span>
             </div>
@@ -94,7 +94,7 @@ export default function OurJourney({ ko }: { ko: boolean }) {
         ))}
 
         {/* Coming soon card */}
-        <div className="flex-shrink-0 w-[260px] md:w-[300px] snap-start rounded-2xl border-2 border-dashed border-[#241E1A]/8 flex flex-col items-center justify-center gap-2 min-h-[260px]">
+        <div className="flex-shrink-0 w-[320px] md:w-[400px] snap-start rounded-2xl border-2 border-dashed border-[#241E1A]/8 flex flex-col items-center justify-center gap-2 min-h-[260px]">
           <span className="text-[32px] text-[#241E1A]/10 font-light">+</span>
           <span className="text-[14px] text-[#241E1A]/20 font-[var(--font-fredoka)]">
             {ko ? "더 많은 이야기가 올 예정" : "More coming soon"}

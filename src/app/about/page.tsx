@@ -19,8 +19,8 @@ export default function AboutPage() {
       <AboutHero ko={ko} />
       <BrandVision ko={ko} />
       <FounderMessage ko={ko} />
-      <OurJourney ko={ko} />
       <GlobalReach ko={ko} />
+      <OurJourney ko={ko} />
       <ContactSection ko={ko} />
       <Footer />
     </div>

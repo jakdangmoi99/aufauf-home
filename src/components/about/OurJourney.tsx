@@ -54,11 +54,6 @@ export default function OurJourney({ ko }: { ko: boolean }) {
               {ko ? "어푸어푸가 만난 순간들" : "Moments with auf auf"}
             </h2>
           </div>
-          {/* Scroll arrows */}
-          <div className="hidden md:flex gap-2">
-            <button onClick={() => scroll(-1)} className="w-10 h-10 rounded-full bg-[#241E1A]/5 flex items-center justify-center text-[#241E1A]/40 text-xl cursor-pointer border-none hover:bg-[#241E1A]/10 transition-colors">‹</button>
-            <button onClick={() => scroll(1)} className="w-10 h-10 rounded-full bg-[#241E1A]/5 flex items-center justify-center text-[#241E1A]/40 text-xl cursor-pointer border-none hover:bg-[#241E1A]/10 transition-colors">›</button>
-          </div>
         </div>
       </div>
 
@@ -103,6 +98,12 @@ export default function OurJourney({ ko }: { ko: boolean }) {
 
         {/* Right spacer */}
         <div className="flex-shrink-0 w-[max(0px,calc((100vw-1200px)/2))]" />
+      </div>
+
+      {/* Scroll arrows below cards */}
+      <div className="flex justify-center gap-3 mt-6">
+        <button onClick={() => scroll(-1)} className="w-10 h-10 rounded-full bg-[#241E1A]/5 flex items-center justify-center text-[#241E1A]/40 text-xl cursor-pointer border-none hover:bg-[#241E1A]/10 transition-colors">‹</button>
+        <button onClick={() => scroll(1)} className="w-10 h-10 rounded-full bg-[#241E1A]/5 flex items-center justify-center text-[#241E1A]/40 text-xl cursor-pointer border-none hover:bg-[#241E1A]/10 transition-colors">›</button>
       </div>
 
       <style>{`

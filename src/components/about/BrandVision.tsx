@@ -55,8 +55,8 @@ export default function BrandVision({ ko }: { ko: boolean }) {
           <div className="absolute -bottom-6 -left-4 md:-left-8 bg-white rounded-2xl px-6 py-5 shadow-[0_12px_36px_rgba(36,30,26,.1)] max-w-[280px]">
             <p className="font-[var(--font-cormorant)] italic text-[18px] text-[#241E1A]/80 leading-[1.5]">
               {ko
-                ? "&ldquo;모든 뷰티는 잘 씻어내는 것에서 시작됩니다&rdquo;"
-                : "&ldquo;All beauty begins with washing off well&rdquo;"}
+                ? <>&ldquo;모든 뷰티는 잘 씻어내는 것에서 시작됩니다&rdquo;</>
+                : <>&ldquo;All beauty begins with washing off well&rdquo;</>}
             </p>
           </div>
         </div>
